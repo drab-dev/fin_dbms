@@ -83,13 +83,15 @@ body {
 }
 
 .greeting-container {
+    position: fixed;
+    top: 40px;
+    right: 60px;
     text-align: right;
-    margin: 40px 20px 0 0;
     line-height: 1.5;
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 20;
 }
 
 .greeting {
@@ -111,6 +113,7 @@ body {
 
 /* Dashboard styles */
 .dashboard-container {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -176,7 +179,7 @@ body {
 
 /* Animated floating action buttons */
 .fab-container {
-    position: absolute;
+    position: fixed;
     right: 60px;
     bottom: 60px;
     display: flex;
@@ -206,7 +209,119 @@ body {
     box-shadow: 0 16px 48px rgba(44,47,51,0.22);
 }
 
-/* Responsive */
+/* Login page styles */
+.login-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44,47,51,0.15);
+    padding: 40px 32px 32px 32px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px auto;
+    animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.login-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #2c2f33;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.login-form label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #444;
+}
+.login-form input, .login-form select {
+    padding: 10px 12px;
+    border-radius: 7px;
+    border: 1px solid #bbb;
+    margin-bottom: 18px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s;
+}
+.login-form input:focus, .login-form select:focus {
+    border: 1.5px solid #2c2f33;
+}
+.login-btn {
+    background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 0;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.login-btn:hover {
+    background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.login-error {
+    color: #e74c3c;
+    font-size: 0.98em;
+    margin-bottom: 10px;
+    text-align: center;
+    min-height: 22px;
+}
+
+/* Fix dashboard layout for React */
+.dashboard-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+    z-index: 1;
+}
+.fab-container {
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 10;
+}
+.greeting-container {
+    position: fixed;
+    top: 40px;
+    right: 60px;
+    text-align: right;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 20;
+}
+@media (max-width: 900px) {
+    .fab-container {
+        right: 20px;
+        bottom: 20px;
+    }
+    .greeting-container {
+        right: 20px;
+        top: 20px;
+    }
+}
+
 @media (max-width: 1100px) {
     .dashboard { width: 98vw; grid-template-columns: 1fr 1fr; }
 }
