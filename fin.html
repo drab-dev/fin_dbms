@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: antiquewhite;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+        }
+
+        .sidebar {
+            background-color: #2c2f33;
+            width: 200px;
+            transition: width 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.collapsed {
+            width: 40px;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 10px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .menu-title {
+            font-weight: bold;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .arrow {
+            margin-right: 10px;
+        }
+
+        .submenu {
+            list-style: none;
+            padding-left: 20px;
+            display: none;
+        }
+
+        .submenu.open {
+            display: block;
+        }
+
+        .greeting-container {
+            text-align: right;
+            margin: 40px 20px 0 0;
+            line-height: 1.5;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .greeting {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .name {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        .label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()" id="toggleBtn">→</button>
+        <div class="menu-title" id="menuTitle">Menu</div>
+        <ul class="menu" id="menu">
+            <li class="menu-item" onclick="openBlank('ledgers.html')">
+                <span class="arrow label">></span><span class="label">Ledgers</span>
+            </li>
+            <li class="menu-item" onclick="openBlank('customers.html')">
+                <span class="arrow label">></span><span class="label">Customers</span>
+            </li>
+            <li class="menu-item" onclick="openBlank('vendors.html')">
+                <span class="arrow label">></span><span class="label">Vendors</span>
+            </li>
+            <li class="menu-item" onclick="toggleSubmenu()">
+                <span class="arrow label">></span><span class="label">Statements</span>
+            </li>
+            <ul class="submenu" id="statementsSubmenu">
+                <li class="menu-item" onclick="openBlank('pl.html')">
+                    <span class="arrow label">></span><span class="label">P and L</span>
+                </li>
+                <li class="menu-item" onclick="openBlank('bank.html')">
+                    <span class="arrow label">></span><span class="label">Bank Statement</span>
+                </li>
+                <li class="menu-item" onclick="openBlank('balance.html')">
+                    <span class="arrow label">></span><span class="label">Balance Sheet</span>
+                </li>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="greeting-container">
+        <div class="greeting" id="greeting"></div>
+        <div class="name">Nikhil</div>
+    </div>
+
+    <script>
+        const greetingElement = document.getElementById('greeting');
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) {
+            greetingElement.textContent = 'Good Morning';
+        } else if (hour >= 12 && hour < 16) {
+            greetingElement.textContent = 'Good Afternoon';
+        } else if (hour >= 16 && hour < 20) {
+            greetingElement.textContent = 'Good Evening';
+        } else {
+            greetingElement.textContent = 'Welcome';
+        }
+
+        function openBlank(page) {
+            window.open(page, '_blank');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const labels = document.querySelectorAll('.label');
+            const menuTitle = document.getElementById('menuTitle');
+            const toggleBtn = document.getElementById('toggleBtn');
+
+            sidebar.classList.toggle('collapsed');
+            const isCollapsed = sidebar.classList.contains('collapsed');
+
+            labels.forEach(el => {
+                el.style.display = isCollapsed ? 'none' : 'inline';
+            });
+
+            menuTitle.style.display = isCollapsed ? 'none' : 'block';
+
+            toggleBtn.innerHTML = isCollapsed ? '→' : '←';
+        }
+
+        function toggleSubmenu() {
+            const submenu = document.getElementById('statementsSubmenu');
+            submenu.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
