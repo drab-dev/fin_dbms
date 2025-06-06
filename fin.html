@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: antiquewhite;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -12,7 +13,7 @@
         }
 
         .sidebar {
-            background-color: #2c2f33;
+            background: #2c2f33;
             width: 200px;
             transition: width 0.3s ease;
             overflow: hidden;
@@ -20,6 +21,8 @@
             color: white;
             display: flex;
             flex-direction: column;
+            box-shadow: 2px 0 16px rgba(44,47,51,0.08);
+            z-index: 2;
         }
 
         .sidebar.collapsed {
@@ -35,12 +38,19 @@
             padding: 10px;
             text-align: left;
             width: 100%;
+            transition: background 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.08);
         }
 
         .menu-title {
+            font-family: 'Montserrat', sans-serif;
             font-weight: bold;
             padding: 10px;
             font-size: 18px;
+            letter-spacing: 1px;
         }
 
         .menu {
@@ -54,11 +64,13 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            border-radius: 6px;
         }
 
         .menu-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.13);
+            transform: scale(1.04);
         }
 
         .arrow {
@@ -86,9 +98,11 @@
         }
 
         .greeting {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5em;
             font-weight: bold;
             color: #333;
+            letter-spacing: 1px;
         }
 
         .name {
@@ -98,6 +112,132 @@
 
         .label {
             color: white;
+        }
+
+        /* Dashboard styles */
+        .dashboard-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 40px;
+            z-index: 1;
+        }
+
+        .dashboard-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            color: #2c2f33;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+            width: 820px;
+            max-width: 90vw;
+            animation: dashboardFadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+
+        @keyframes dashboardFadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card {
+            background: linear-gradient(120deg, #7289da 0%, #99aab5 100%);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,47,51,0.10);
+            padding: 32px 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px;
+            min-height: 120px;
+            position: relative;
+            overflow: hidden;
+            animation: statCardPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+
+        @keyframes statCardPop {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .stat-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(44,47,51,0.10);
+        }
+
+        /* Animated floating action buttons */
+        .fab-container {
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 10;
+        }
+
+        .fab {
+            background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            font-size: 2em;
+            box-shadow: 0 4px 16px rgba(44,47,51,0.18);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+            animation: fabFloat 2.5s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
+        }
+
+        .fab:hover {
+            transform: scale(1.12) rotate(-8deg);
+            box-shadow: 0 8px 32px rgba(44,47,51,0.22);
+        }
+
+        .fab-1 { animation-delay: 0s; }
+        .fab-2 { animation-delay: 0.5s; }
+        .fab-3 { animation-delay: 1s; }
+        .fab-4 { animation-delay: 1.5s; }
+        .fab-5 { animation-delay: 2s; }
+        .fab-6 { animation-delay: 2.5s; }
+
+        @keyframes fabFloat {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-18px) scale(1.08); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .dashboard { width: 98vw; grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 700px) {
+            .dashboard { grid-template-columns: 1fr; width: 98vw; }
+            .dashboard-container { margin-top: 10px; }
         }
     </style>
 </head>
@@ -132,9 +272,48 @@
         </ul>
     </div>
 
+    <div class="dashboard-container">
+        <div class="dashboard-title">Dashboard</div>
+        <div class="dashboard" id="dashboard">
+            <div class="stat-card">
+                <div class="stat-title">Total Transactions</div>
+                <div class="stat-value" id="stat-transactions">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Total Inventory Items</div>
+                <div class="stat-value" id="stat-inventory">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Total Customers</div>
+                <div class="stat-value" id="stat-customers">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Total Vendors</div>
+                <div class="stat-value" id="stat-vendors">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Pending Orders</div>
+                <div class="stat-value" id="stat-orders">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Low Stock Alerts</div>
+                <div class="stat-value" id="stat-lowstock">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab-container">
+        <button class="fab fab-1" title="Add Transaction" id="btnAddTrans">＋</button>
+        <button class="fab fab-2" title="Add Inventory" id="btnAddInv">📦</button>
+        <button class="fab fab-3" title="Add Customer" id="btnAddCust">👤</button>
+        <button class="fab fab-4" title="Add Vendor" id="btnAddVend">🏢</button>
+        <button class="fab fab-5" title="Reports" id="btnReports">📊</button>
+        <button class="fab fab-6" title="Settings" id="btnSettings">⚙️</button>
+    </div>
+
     <div class="greeting-container">
         <div class="greeting" id="greeting"></div>
-        <div class="name">Nikhil</div>
+        <div class="name" id="userName">Nikhil</div>
     </div>
 
     <script>
@@ -175,6 +354,47 @@
         function toggleSubmenu() {
             const submenu = document.getElementById('statementsSubmenu');
             submenu.classList.toggle('open');
+        }
+
+        // --- Dashboard demo data (replace with DB fetch) ---
+        function loadDashboardStats() {
+            // Simulate fetching from DB
+            const stats = {
+                transactions: 1240,
+                inventory: 320,
+                customers: 87,
+                vendors: 34,
+                orders: 12,
+                lowstock: 5
+            };
+            document.getElementById('stat-transactions').textContent = stats.transactions;
+            document.getElementById('stat-inventory').textContent = stats.inventory;
+            document.getElementById('stat-customers').textContent = stats.customers;
+            document.getElementById('stat-vendors').textContent = stats.vendors;
+            document.getElementById('stat-orders').textContent = stats.orders;
+            document.getElementById('stat-lowstock').textContent = stats.lowstock;
+        }
+        loadDashboardStats();
+
+        // --- Floating Action Buttons: Animate on click ---
+        const fabs = document.querySelectorAll('.fab');
+        fabs.forEach((fab, idx) => {
+            fab.addEventListener('click', () => {
+                fab.animate([
+                    { transform: 'scale(1) rotate(0deg)' },
+                    { transform: 'scale(1.18) rotate(12deg)' },
+                    { transform: 'scale(1) rotate(0deg)' }
+                ], {
+                    duration: 400,
+                    easing: 'cubic-bezier(.68,-0.55,.27,1.55)'
+                });
+            });
+        });
+
+        // --- User greeting and name from login ---
+        const user = JSON.parse(localStorage.getItem('fin_user') || '{}');
+        if (user && user.username) {
+            document.getElementById('userName').textContent = user.username.charAt(0).toUpperCase() + user.username.slice(1);
         }
     </script>
 </body>
