@@ -3,7 +3,7 @@ import './fin.css';
 
 const DashboardStats = () => {
   const stats = {
-    transactions: 1241,
+    transactions: 1500,
     inventory: 321,
     customers: 87,
     vendors: 34,
