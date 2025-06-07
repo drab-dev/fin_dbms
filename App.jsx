@@ -121,14 +121,34 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.href = 'login.html'; // Redirect to login page
+    window.location.replace('login.html'); // Use replace to prevent back navigation
   };
 
   return (
     <div className="greeting-container">
       <div className="greeting" id="greeting"></div>
       <div className="name" id="userName">Nikhil</div>
-      <button className="signout-btn" onClick={handleSignOut} style={{marginTop: '10px'}}>Sign Out</button>
+      <button
+        className="signout-btn"
+        onClick={handleSignOut}
+        style={{
+          marginTop: '14px',
+          background: 'linear-gradient(90deg, #ff5858 0%, #f09819 100%)',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '20px',
+          padding: '8px 22px',
+          fontWeight: 'bold',
+          fontSize: '1rem',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+          cursor: 'pointer',
+          transition: 'background 0.2s, transform 0.1s',
+        }}
+        onMouseOver={e => e.currentTarget.style.background = 'linear-gradient(90deg, #f09819 0%, #ff5858 100%)'}
+        onMouseOut={e => e.currentTarget.style.background = 'linear-gradient(90deg, #ff5858 0%, #f09819 100%)'}
+      >
+        Sign Out
+      </button>
     </div>
   );
 };
