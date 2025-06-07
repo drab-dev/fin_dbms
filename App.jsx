@@ -87,7 +87,7 @@ const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
       </li>
       <ul className="submenu" id="statementsSubmenu">
         <li className="menu-item" onClick={() => openBlank('pl.html')}>
-          <span className="arrow label">&gt;</span><span className="label">P and L</span>
+          <span className="arrow label">&gt;</span><span className="label">P/L</span>
         </li>
         <li className="menu-item" onClick={() => openBlank('bank.html')}>
           <span className="arrow label">&gt;</span><span className="label">Bank Statement</span>
