@@ -29,7 +29,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="login_warpper">
     <div className="login-container">
-      <div className="login-title">FinDBMS Login</div>
+      <div className="login-title">Login</div>
       <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
         <label htmlFor="username">Username</label>
         <input
@@ -62,7 +62,7 @@ const Login = ({ onLogin }) => {
         <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
-    <img src={logoImage} style={{width:"300px"}} alt="" />
+    <img src={logoImage} style={{width:"360px"}} alt="" />
     <div style={{width:"350px"}}></div>
     </div>
   );

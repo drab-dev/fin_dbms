@@ -276,7 +276,7 @@ body {
 }
 .login-btn {
     /*background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);*/
-    background: linear-gradient(90deg, #65A38D 60%,  #988B86 100%);
+    background-color: #65A38D;
     color: #fff;
     border: none;
     border-radius: 7px;
@@ -287,11 +287,11 @@ body {
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
 }
-.login-btn:hover {
-    /*background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);*/
+/*.login-btn:hover {
+    background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);
     background: linear-gradient(90deg, #988B86  0%, #65A38D 100%);
     transform: translateY(-2px) scale(1.03);
-}
+}*/
 .login-error {
     color: #e74c3c;
     font-size: 0.98em;
