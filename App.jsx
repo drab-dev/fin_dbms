@@ -22,7 +22,7 @@ const DashboardStats = () => {
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Customers</div>
-        <div className="stat-value">{stats.customers}</div>
+        <div className="stat-value">{stats.Customers}</div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Vendors</div>
@@ -76,8 +76,8 @@ const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
       <li className="menu-item" onClick={() => openBlank('ledgers.html')}>
         <span className="arrow label">&gt;</span><span className="label">Ledgers</span>
       </li>
-      <li className="menu-item" onClick={() => openBlank('customers.html')}>
-        <span className="arrow label">&gt;</span><span className="label">Customers</span>
+      <li className="menu-item" onClick={() => openBlank('debtor.html')}>
+        <span className="arrow label">&gt;</span><span className="label">Debtor</span>
       </li>
       <li className="menu-item" onClick={() => openBlank('vendors.html')}>
         <span className="arrow label">&gt;</span><span className="label">Vendors</span>
