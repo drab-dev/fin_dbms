@@ -62,7 +62,7 @@ const Login = ({ onLogin }) => {
         <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
-    <img src={logoImage} style={{width:"360px"}} alt="" />
+    <img src={logoImage} style={{width:"600px"}} alt="" />
     <div style={{width:"350px"}}></div>
     </div>
   );
