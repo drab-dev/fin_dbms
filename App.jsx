@@ -73,26 +73,26 @@ const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
     <button className="toggle-btn" onClick={toggleSidebar} id="toggleBtn">→</button>
     <div className="menu-title" id="menuTitle">Menu</div>
     <ul className="menu" id="menu">
-      <li className="menu-item" onClick={() => openBlank('ledgers.html')}>
+      <li className="menu-item" onClick={() => openBlank('Ledgers.jsx')}>
         <span className="arrow label">&gt;</span><span className="label">Ledgers</span>
       </li>
-      <li className="menu-item" onClick={() => openBlank('debtor.html')}>
-        <span className="arrow label">&gt;</span><span className="label">Debtor</span>
+      <li className="menu-item" onClick={() => openBlank('Debtors.jsx')}>
+        <span className="arrow label">&gt;</span><span className="label">Debtors</span>
       </li>
-      <li className="menu-item" onClick={() => openBlank('vendors.html')}>
-        <span className="arrow label">&gt;</span><span className="label">Vendors</span>
+      <li className="menu-item" onClick={() => openBlank('Creditors.jsx')}>
+        <span className="arrow label">&gt;</span><span className="label">Creditors</span>
       </li>
       <li className="menu-item" onClick={toggleSubmenu}>
         <span className="arrow label">&gt;</span><span className="label">Statements</span>
       </li>
       <ul className="submenu" id="statementsSubmenu">
-        <li className="menu-item" onClick={() => openBlank('pl.html')}>
+        <li className="menu-item" onClick={() => openBlank('Pl.jsx')}>
           <span className="arrow label">&gt;</span><span className="label">P/L</span>
         </li>
-        <li className="menu-item" onClick={() => openBlank('bank.html')}>
+        <li className="menu-item" onClick={() => openBlank('Bank.jsx')}>
           <span className="arrow label">&gt;</span><span className="label">Bank Statement</span>
         </li>
-        <li className="menu-item" onClick={() => openBlank('balance.html')}>
+        <li className="menu-item" onClick={() => openBlank('Balance.jsx')}>
           <span className="arrow label">&gt;</span><span className="label">Balance Sheet</span>
         </li>
       </ul>
