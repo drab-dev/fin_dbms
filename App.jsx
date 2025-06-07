@@ -157,6 +157,14 @@ const Greeting = () => {
 };
 
 const App = () => {
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    const user = localStorage.getItem('fin_user');
+    if (!user) {
+      window.location.replace('login.html');
+    }
+  }, []);
+
   const openBlank = (page) => {
     window.open(page, '_blank');
   };
