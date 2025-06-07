@@ -80,7 +80,7 @@ const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
         <span className="arrow label">&gt;</span><span className="label">Debtors</span>
       </li>
       <li className="menu-item" onClick={() => openBlank('Creditors.jsx')}>
-        <span className="arrow label">&gt;</span><span className="label">Credistors</span>
+        <span className="arrow label">&gt;</span><span className="label">Creditors</span>
       </li>
       <li className="menu-item" onClick={toggleSubmenu}>
         <span className="arrow label">&gt;</span><span className="label">Statements</span>
