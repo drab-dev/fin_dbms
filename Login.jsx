@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './fin.css';
+import logoImage from './accosight logo new.png';
 
 const users = [
   { username: 'admin', password: 'admin123', role: 'admin' },
@@ -26,6 +27,7 @@ const Login = ({ onLogin }) => {
   };
 
   return (
+    <div className="login_warpper">
     <div className="login-container">
       <div className="login-title">FinDBMS Login</div>
       <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
@@ -60,7 +62,11 @@ const Login = ({ onLogin }) => {
         <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
+    <img src={logoImage} style={{width:"300px"}} alt="" />
+    <div style={{width:"350px"}}></div>
+    </div>
   );
 };
 
 export default Login;
+

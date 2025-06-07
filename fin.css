@@ -1,6 +1,10 @@
+#root{
+    width : 100%;
+}
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /*background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
+    background-color: #F7EFE3;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -210,6 +214,16 @@ body {
 }
 
 /* Login page styles */
+.login_warpper{
+    box-sizing: border-box;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    height: 100vh;
+}
 .login-container {
     background: #fff;
     border-radius: 18px;
@@ -220,10 +234,10 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 60px auto;
-    position: absolute;
+    /*position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
     animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
 }
 @keyframes fadeIn {
@@ -261,7 +275,8 @@ body {
     border: 1.5px solid #2c2f33;
 }
 .login-btn {
-    background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);
+    /*background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);*/
+    background: linear-gradient(90deg, #65A38D 60%,  #988B86 100%);
     color: #fff;
     border: none;
     border-radius: 7px;
@@ -273,7 +288,8 @@ body {
     transition: background 0.2s, transform 0.2s;
 }
 .login-btn:hover {
-    background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);
+    /*background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);*/
+    background: linear-gradient(90deg, #988B86  0%, #65A38D 100%);
     transform: translateY(-2px) scale(1.03);
 }
 .login-error {
