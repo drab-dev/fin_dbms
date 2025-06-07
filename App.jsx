@@ -121,7 +121,7 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.replace('Login.jsx'); // Use replace to prevent back navigation
+    window.location.replace('/'); // Use root route for Vite/React SPA
   };
 
   return (
@@ -161,7 +161,7 @@ const App = () => {
   useEffect(() => {
     const user = localStorage.getItem('fin_user');
     if (!user) {
-      window.location.replace('Login.jsx');
+      window.location.replace('/'); // Use root route for Vite/React SPA
     }
   }, []);
 
