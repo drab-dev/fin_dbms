@@ -118,10 +118,17 @@ const Greeting = () => {
       document.getElementById('userName').textContent = user.username.charAt(0).toUpperCase() + user.username.slice(1);
     }
   }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('fin_user');
+    window.location.href = 'login.html'; // Redirect to login page
+  };
+
   return (
     <div className="greeting-container">
       <div className="greeting" id="greeting"></div>
       <div className="name" id="userName">Nikhil</div>
+      <button className="signout-btn" onClick={handleSignOut} style={{marginTop: '10px'}}>Sign Out</button>
     </div>
   );
 };
