@@ -40,7 +40,7 @@ const DashboardStats = () => {
   );
 };
 
-const FloatingButtons = () => {
+/*const FloatingButtons = () => {
   useEffect(() => {
     const fabs = document.querySelectorAll('.fab');
     fabs.forEach((fab) => {
@@ -66,7 +66,7 @@ const FloatingButtons = () => {
       <button className="fab fab-6" title="Settings" id="btnSettings">⚙️</button>
     </div>
   );
-};
+};*/
 
 const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
   <div className="sidebar" id="sidebar">
@@ -132,6 +132,9 @@ const Greeting = () => {
         className="signout-btn"
         onClick={handleSignOut}
         style={{
+          position:'fixed',
+          bottom:'10px',
+          left:'10px',
           marginTop: '14px',
           background: 'linear-gradient(90deg, #ff5858 0%, #f09819 100%)',
           color: '#fff',
@@ -182,7 +185,7 @@ const App = () => {
           <div className="dashboard-title">Dashboard</div>
           <DashboardStats />
         </div>
-        <FloatingButtons />
+        {/* <FloatingButtons /> */}
         <Greeting />
       </div>
     </div>
