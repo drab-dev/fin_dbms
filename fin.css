@@ -1,6 +1,7 @@
-#root{
-    width : 100%;
+#root {
+    width: 100%;
 }
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     /*background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
@@ -20,7 +21,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 16px rgba(44,47,51,0.08);
+    box-shadow: 2px 0 16px rgba(44, 47, 51, 0.08);
     z-index: 2;
 }
 
@@ -41,7 +42,7 @@ body {
 }
 
 .toggle-btn:hover {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .menu-title {
@@ -148,7 +149,7 @@ body {
 .stat-card {
     background: linear-gradient(120deg, #7289da 0%, #99aab5 100%);
     border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(44,47,51,0.10);
+    box-shadow: 0 4px 24px rgba(44, 47, 51, 0.10);
     padding: 32px 24px 24px 24px;
     display: flex;
     flex-direction: column;
@@ -157,12 +158,12 @@ body {
     min-height: 120px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.35s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+    transition: transform 0.35s cubic-bezier(.68, -0.55, .27, 1.55), box-shadow 0.2s;
 }
 
 .stat-card:hover {
     transform: translateY(-18px) scale(1.08) rotate(-2deg);
-    box-shadow: 0 12px 36px rgba(44,47,51,0.18);
+    box-shadow: 0 12px 36px rgba(44, 47, 51, 0.18);
 }
 
 .stat-title {
@@ -178,7 +179,7 @@ body {
     font-weight: 700;
     color: #fff;
     letter-spacing: 1px;
-    text-shadow: 0 2px 8px rgba(44,47,51,0.10);
+    text-shadow: 0 2px 8px rgba(44, 47, 51, 0.10);
 }
 
 /* Animated floating action buttons */
@@ -200,21 +201,21 @@ body {
     width: 64px;
     height: 64px;
     font-size: 2em;
-    box-shadow: 0 4px 16px rgba(44,47,51,0.18);
+    box-shadow: 0 4px 16px rgba(44, 47, 51, 0.18);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.35s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.2s;
+    transition: transform 0.35s cubic-bezier(.68, -0.55, .27, 1.55), box-shadow 0.2s;
 }
 
 .fab:hover {
     transform: translateY(-18px) scale(1.12) rotate(-8deg);
-    box-shadow: 0 16px 48px rgba(44,47,51,0.22);
+    box-shadow: 0 16px 48px rgba(44, 47, 51, 0.22);
 }
 
 /* Login page styles */
-.login_warpper{
+.login_warpper {
     box-sizing: border-box;
     width: 90%;
     margin: auto;
@@ -224,10 +225,11 @@ body {
     padding: 40px;
     height: 100vh;
 }
+
 .login-container {
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(44,47,51,0.15);
+    box-shadow: 0 8px 32px rgba(44, 47, 51, 0.15);
     padding: 40px 32px 32px 32px;
     width: 350px;
     display: flex;
@@ -238,12 +240,21 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);*/
-    animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    animation: fadeIn 1.2s cubic-bezier(.68, -0.55, .27, 1.55);
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .login-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.2em;
@@ -252,17 +263,21 @@ body {
     margin-bottom: 18px;
     letter-spacing: 1px;
 }
+
 .login-form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+
 .login-form label {
     font-weight: 500;
     margin-bottom: 6px;
     color: #444;
 }
-.login-form input, .login-form select {
+
+.login-form input,
+.login-form select {
     padding: 10px 12px;
     border-radius: 7px;
     border: 1px solid #bbb;
@@ -271,9 +286,12 @@ body {
     outline: none;
     transition: border 0.2s;
 }
-.login-form input:focus, .login-form select:focus {
+
+.login-form input:focus,
+.login-form select:focus {
     border: 1.5px solid #2c2f33;
 }
+
 .login-btn {
     /*background: linear-gradient(90deg, #2c2f33 60%, #7289da 100%);*/
     background-color: #65A38D;
@@ -287,6 +305,7 @@ body {
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
 }
+
 /*.login-btn:hover {
     background: linear-gradient(90deg, #7289da 0%, #2c2f33 100%);
     background: linear-gradient(90deg, #988B86  0%, #65A38D 100%);
@@ -311,6 +330,7 @@ body {
     margin-top: 40px;
     z-index: 1;
 }
+
 .fab-container {
     position: fixed;
     right: 60px;
@@ -320,6 +340,7 @@ body {
     gap: 24px;
     z-index: 10;
 }
+
 .greeting-container {
     position: fixed;
     top: 40px;
@@ -331,11 +352,166 @@ body {
     align-items: flex-end;
     z-index: 20;
 }
+
+/* Ledgers Css*/
+.ledgersBox {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.ledgersHeroSection {
+    width: 100%;
+}
+
+.ledgersHeroSectionHeader {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.ledgersHeroSection main {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+}
+
+/* Ledgers Selection Container */
+.ledgerSelectionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    /* clean white background like login container */
+    border-radius: 18px;
+    /* consistent with other rounded corners */
+    box-shadow: 0 8px 32px rgba(44, 47, 51, 0.15);
+    /* same subtle shadow style */
+    min-width: 300px;
+    margin: 20px;
+    height: 420px;
+    /* fixed height so results can scroll */
+}
+
+/* Search box styles */
+.ledgerSearchBox{
+    width: 90%;
+    margin: auto;
+    padding: 2px;
+    background-color: white;
+    border-radius: 10px;
+}
+.ledgerSearchBox input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: 1px solid #bbb;
+    font-family: 'Roboto', Arial, sans-serif;
+    transition: border 0.2s ease;
+    outline: none;
+}
+
+.ledgerSearchBox input[type="text"]:focus {
+    border: 1.5px solid #2c2f33;
+    /* your brand color from login input focus */
+    box-shadow: 0 0 6px rgba(44, 47, 51, 0.25);
+}
+
+/* Ledger results container */
+.ledgerResults {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-top: 1px solid #ddd;
+    margin-top: 12px;
+    padding-right: 8px;
+    /* prevent content from hiding behind scrollbar */
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Scrollbar styling (optional) */
+.ledgerResults::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ledgerResults::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.ledgerResults::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+    border: 2px solid #f1f1f1;
+}
+
+.ledgerCard {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.ledgerCard:hover {
+    background-color: #e3e3e3;
+    transition: 300ms ease-in-out;
+}
+
+.ledgerDisplay {
+    width: 60%;
+    background-color: #fff;
+    /* clean white background like login container */
+    border-radius: 18px;
+    /* consistent with other rounded corners */
+    box-shadow: 0 8px 32px rgba(44, 47, 51, 0.15);
+    /* same subtle shadow style */
+    text-align: center;
+}
+
+.ledgerDisplayHeader {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.ledgerDetails {
+    padding: 20px;
+    padding-left: 80px;
+    text-align: left;
+}
+
+.savetopdfBtn {
+    background-color: rgb(183, 95, 87);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.savetopdfBtn:hover{
+    transform: translateY(-2px);
+    transition: 300ms;
+}
+
 @media (max-width: 900px) {
     .fab-container {
         right: 20px;
         bottom: 20px;
     }
+
     .greeting-container {
         right: 20px;
         top: 20px;
@@ -343,12 +519,21 @@ body {
 }
 
 @media (max-width: 1100px) {
-    .dashboard { width: 98vw; grid-template-columns: 1fr 1fr; }
+    .dashboard {
+        width: 98vw;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 700px) {
-    .dashboard { grid-template-columns: 1fr; width: 98vw; }
-    .dashboard-container { margin-top: 10px; }
+    .dashboard {
+        grid-template-columns: 1fr;
+        width: 98vw;
+    }
+
+    .dashboard-container {
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 500px) {

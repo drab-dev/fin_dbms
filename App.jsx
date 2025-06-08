@@ -1,53 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './fin.css';
-import { supabase } from './supabaseClient';
+import Sidebar from './sideBar';
 
 const DashboardStats = () => {
-  const [stats, setStats] = useState({
-    transactions: 0,
-    inventory: 0,
-    customers: 0,
-    vendors: 0,
-    orders: 0,
-    lowstock: 0,
-  });
-
-  useEffect(() => {
-    async function fetchStats() {
-      // Sample Supabase queries for each stat
-      // Adjust table/column names as per your schema
-      const { count: transactions } = await supabase
-        .from('transactions')
-        .select('*', { count: 'exact', head: true });
-      const { count: inventory } = await supabase
-        .from('inventory')
-        .select('*', { count: 'exact', head: true });
-      const { count: customers } = await supabase
-        .from('customers')
-        .select('*', { count: 'exact', head: true });
-      const { count: vendors } = await supabase
-        .from('vendors')
-        .select('*', { count: 'exact', head: true });
-      const { count: orders } = await supabase
-        .from('orders')
-        .select('*', { count: 'exact', head: true });
-      // Example: low stock = inventory items with quantity < 10
-      const { count: lowstock } = await supabase
-        .from('inventory')
-        .select('*', { count: 'exact', head: true })
-        .lt('quantity', 10);
-      setStats({
-        transactions: transactions ?? 0,
-        inventory: inventory ?? 0,
-        customers: customers ?? 0,
-        vendors: vendors ?? 0,
-        orders: orders ?? 0,
-        lowstock: lowstock ?? 0,
-      });
-    }
-    fetchStats();
-  }, []);
-
+  const stats = {
+    transactions: 1500,
+    inventory: 321,
+    customers: 87,
+    vendors: 34,
+    orders: 12,
+    lowstock: 5,
+  };
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
@@ -60,7 +23,7 @@ const DashboardStats = () => {
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Customers</div>
-        <div className="stat-value">{stats.customers}</div>
+        <div className="stat-value">{stats.Customers}</div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Vendors</div>
@@ -106,37 +69,6 @@ const DashboardStats = () => {
   );
 };*/
 
-const Sidebar = ({ openBlank, toggleSidebar, toggleSubmenu }) => (
-  <div className="sidebar" id="sidebar">
-    <button className="toggle-btn" onClick={toggleSidebar} id="toggleBtn">→</button>
-    <div className="menu-title" id="menuTitle">Menu</div>
-    <ul className="menu" id="menu">
-      <li className="menu-item" onClick={() => openBlank('Ledgers.jsx')}>
-        <span className="arrow label">&gt;</span><span className="label">Ledgers</span>
-      </li>
-      <li className="menu-item" onClick={() => openBlank('Debtors.jsx')}>
-        <span className="arrow label">&gt;</span><span className="label">Debtors</span>
-      </li>
-      <li className="menu-item" onClick={() => openBlank('Creditors.jsx')}>
-        <span className="arrow label">&gt;</span><span className="label">Creditors</span>
-      </li>
-      <li className="menu-item" onClick={toggleSubmenu}>
-        <span className="arrow label">&gt;</span><span className="label">Statements</span>
-      </li>
-      <ul className="submenu" id="statementsSubmenu">
-        <li className="menu-item" onClick={() => openBlank('Pl.jsx')}>
-          <span className="arrow label">&gt;</span><span className="label">P/L</span>
-        </li>
-        <li className="menu-item" onClick={() => openBlank('Bank.jsx')}>
-          <span className="arrow label">&gt;</span><span className="label">Bank Statement</span>
-        </li>
-        <li className="menu-item" onClick={() => openBlank('Balance.jsx')}>
-          <span className="arrow label">&gt;</span><span className="label">Balance Sheet</span>
-        </li>
-      </ul>
-    </ul>
-  </div>
-);
 
 const Greeting = () => {
   useEffect(() => {
@@ -159,7 +91,7 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.replace('/'); // Use root route for Vite/React SPA
+    window.location.replace('login.html'); // Use replace to prevent back navigation
   };
 
   return (
@@ -195,37 +127,9 @@ const Greeting = () => {
 };
 
 const App = () => {
-  // Redirect to login if not authenticated
-  useEffect(() => {
-    const user = localStorage.getItem('fin_user');
-    if (!user) {
-      window.location.replace('/'); // Use root route for Vite/React SPA
-    }
-  }, []);
-
-  const openBlank = (page) => {
-    window.open(page, '_self');
-  };
-  const toggleSidebar = () => {
-    const sidebar = document.getElementById('sidebar');
-    const labels = document.querySelectorAll('.label');
-    const menuTitle = document.getElementById('menuTitle');
-    const toggleBtn = document.getElementById('toggleBtn');
-    sidebar.classList.toggle('collapsed');
-    const isCollapsed = sidebar.classList.contains('collapsed');
-    labels.forEach(el => {
-      el.style.display = isCollapsed ? 'none' : 'inline';
-    });
-    menuTitle.style.display = isCollapsed ? 'none' : 'block';
-    toggleBtn.innerHTML = isCollapsed ? '→' : '←';
-  };
-  const toggleSubmenu = () => {
-    const submenu = document.getElementById('statementsSubmenu');
-    submenu.classList.toggle('open');
-  };
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      <Sidebar openBlank={openBlank} toggleSidebar={toggleSidebar} toggleSubmenu={toggleSubmenu} />
+      <Sidebar></Sidebar>
       <div style={{ flex: 1, position: 'relative' }}>
         <div className="dashboard-container">
           <div className="dashboard-title">Dashboard</div>
