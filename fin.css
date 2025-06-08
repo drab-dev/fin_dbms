@@ -285,7 +285,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased spacing between elements */
   width: 350px;
 }
 
@@ -335,8 +335,8 @@ body {
   justify-content: center;
 }
 
-.login-logo img {
-  max-width: 70%;
-  max-height: 70%;
+.login-logo-img {
+  max-width: 50%; /* Reduced size of the logo */
+  max-height: 50%;
   object-fit: contain;
 }

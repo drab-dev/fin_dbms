@@ -66,7 +66,7 @@ const Login = ({ onLogin }) => {
         </div>
       </div>
       <div className="login-logo">
-        <img src={logoImage} alt="Logo" />
+        <img src={logoImage} alt="Logo" className="login-logo-img" />
       </div>
     </div>
   );
