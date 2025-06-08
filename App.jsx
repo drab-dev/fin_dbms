@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './fin.css';
 import Sidebar from './sideBar.jsx';
+import { useRealtimeNetProfit } from './React_hook_for_net_profit_or_loss.jsx';
 
 const DashboardStats = () => {
+  const { netProfit, loading: profitLoading, error: profitError } = useRealtimeNetProfit();
   const stats = {
-    transactions: 1500,
     inventory: 321,
     customers: 87,
     vendors: 34,
@@ -14,8 +15,10 @@ const DashboardStats = () => {
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
-        <div className="stat-title">Total Transactions</div>
-        <div className="stat-value">{stats.transactions}</div>
+        <div className="stat-title">Net Profit/Loss</div>
+        <div className="stat-value" style={{ color: profitLoading ? undefined : (netProfit > 0 ? 'green' : netProfit < 0 ? 'red' : undefined) }}>
+          {profitLoading ? 'Loading...' : (profitError ? 'Error' : (netProfit !== null ? netProfit : 0))}
+        </div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Inventory Items</div>
