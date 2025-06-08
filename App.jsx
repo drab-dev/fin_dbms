@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './fin.css';
 import { supabase } from './supabaseClient';
+import { useRealtimeNetProfit } from './React_hook_for_net_profit_or_loss';
 
 const DashboardStats = () => {
+  const { netProfit, loading: profitLoading, error: profitError } = useRealtimeNetProfit();
   const [stats, setStats] = useState({
-    transactions: 0,
     inventory: 0,
     customers: 0,
     vendors: 0,
@@ -16,9 +17,6 @@ const DashboardStats = () => {
     async function fetchStats() {
       // Sample Supabase queries for each stat
       // Adjust table/column names as per your schema
-      const { count: transactions } = await supabase
-        .from('transactions')
-        .select('*', { count: 'exact', head: true });
       const { count: inventory } = await supabase
         .from('inventory')
         .select('*', { count: 'exact', head: true });
@@ -37,7 +35,6 @@ const DashboardStats = () => {
         .select('*', { count: 'exact', head: true })
         .lt('quantity', 10);
       setStats({
-        transactions: transactions ?? 0,
         inventory: inventory ?? 0,
         customers: customers ?? 0,
         vendors: vendors ?? 0,
@@ -51,8 +48,10 @@ const DashboardStats = () => {
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
-        <div className="stat-title">Total Transactions</div>
-        <div className="stat-value">{stats.transactions}</div>
+        <div className="stat-title">Net Profit/Loss</div>
+        <div className="stat-value" style={{ color: profitLoading ? undefined : (netProfit > 0 ? 'green' : netProfit < 0 ? 'red' : undefined) }}>
+          {profitLoading ? 'Loading...' : (profitError ? 'Error' : (netProfit !== null ? netProfit : 0))}
+        </div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Inventory Items</div>
