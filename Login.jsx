@@ -48,9 +48,22 @@ const Login = ({ onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <select
+            name="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+          >
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+          </select>
           <div className="login-error">{error}</div>
           <button type="submit" className="login-btn">Login</button>
         </form>
+        <div className="credentials">
+          <p><strong>Admin:</strong> Username: admin | Password: admin123</p>
+          <p><strong>Employee:</strong> Username: employee | Password: emp123</p>
+        </div>
       </div>
       <div className="login-logo">
         <img src={logoImage} alt="Logo" />
