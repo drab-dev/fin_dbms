@@ -158,7 +158,7 @@ const Greeting = () => {
 
 const App = () => {
   const openBlank = (page) => {
-    window.open(page, '_blank');
+    window.open(page, '_self');
   };
   const toggleSidebar = () => {
     const sidebar = document.getElementById('sidebar');
