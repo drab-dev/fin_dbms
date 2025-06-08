@@ -1,4 +1,4 @@
-import Sidebar from "./sideBar";
+import Sidebar from "./sideBar.jsx";
 import './fin.css';
 import { useState } from "react";
 

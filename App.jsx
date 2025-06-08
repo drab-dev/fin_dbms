@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './fin.css';
-import Sidebar from './sideBar';
+import Sidebar from './sideBar.jsx';
 
 const DashboardStats = () => {
   const stats = {
