@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './fin.css';
-<<<<<<< HEAD
 import Sidebar from './sideBar';
 
 const DashboardStats = () => {
@@ -12,60 +11,11 @@ const DashboardStats = () => {
     orders: 12,
     lowstock: 5,
   };
-=======
-import { supabase } from './supabaseClient';
-import { useRealtimeNetProfit } from './React_hook_for_net_profit_or_loss';
-
-const DashboardStats = () => {
-  const { netProfit, loading: profitLoading, error: profitError } = useRealtimeNetProfit();
-  const [stats, setStats] = useState({
-    inventory: 0,
-    customers: 0,
-    vendors: 0,
-    orders: 0,
-    lowstock: 0,
-  });
-
-  useEffect(() => {
-    async function fetchStats() {
-      // Sample Supabase queries for each stat
-      // Adjust table/column names as per your schema
-      const { count: inventory } = await supabase
-        .from('inventory')
-        .select('*', { count: 'exact', head: true });
-      const { count: customers } = await supabase
-        .from('customers')
-        .select('*', { count: 'exact', head: true });
-      const { count: vendors } = await supabase
-        .from('vendors')
-        .select('*', { count: 'exact', head: true });
-      const { count: orders } = await supabase
-        .from('orders')
-        .select('*', { count: 'exact', head: true });
-      // Example: low stock = inventory items with quantity < 10
-      const { count: lowstock } = await supabase
-        .from('inventory')
-        .select('*', { count: 'exact', head: true })
-        .lt('quantity', 10);
-      setStats({
-        inventory: inventory ?? 0,
-        customers: customers ?? 0,
-        vendors: vendors ?? 0,
-        orders: orders ?? 0,
-        lowstock: lowstock ?? 0,
-      });
-    }
-    fetchStats();
-  }, []);
-
->>>>>>> 97a5038953603d03a63c055ea265eb5a875f42c3
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
-        <div className="stat-title">Net Profit/Loss</div>
-        <div className="stat-value" style={{ color: profitLoading ? undefined : (netProfit > 0 ? 'green' : netProfit < 0 ? 'red' : undefined) }}>
-          {profitLoading ? 'Loading...' : (profitError ? 'Error' : (netProfit !== null ? netProfit : 0))}
-        </div>
+        <div className="stat-title">Total Transactions</div>
+        <div className="stat-value">{stats.transactions}</div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Inventory Items</div>
