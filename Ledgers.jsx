@@ -1,7 +1,7 @@
 import Sidebar from "./sideBar.jsx";
 import './fin.css';
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 function Ledgers() {
     const ledgerData = [
@@ -89,22 +89,7 @@ function Ledgers() {
                 <div style={{ width: "100%" }}>
                     <div className="ledgersHeroSection">
                         <header className="ledgersHeroSectionHeader">
-                            <Link to="/" style={{ textDecoration: 'none' }}>
-                                <button style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    color: '#333',
-                                    fontSize: '1.1em',
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    padding: 0,
-                                    fontFamily: 'inherit',
-                                    fontWeight: 500
-                                }}>
-                                    ← Back to Dashboard
-                                </button>
-                            </Link>
+                            <p> ← Back to Dashboard</p>
                             <h1>Ledgers</h1>
                         </header>
                         <main>
