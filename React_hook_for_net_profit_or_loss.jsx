@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import supabase from './supabaseClient.js';
 
 export function useRealtimeNetProfit() {
   const [netProfit, setNetProfit] = useState(null);

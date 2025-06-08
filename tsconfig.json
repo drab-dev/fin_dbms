@@ -11,14 +11,10 @@
     "allowJs": true,
     "checkJs": false
   },
-  "include": ["src", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "include": ["src"],
   "exclude": [
     "dist",
-    "fin_dbms/dist",
-    "vite.config.js",
-    "supabaseClient.js",
-    "index.js",
-    "fin_dbms/eslint.config.js",
-    "fin_dbms/vite.config.js"
+    "node_modules",
+    "*.config.js"
   ]
 }

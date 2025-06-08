@@ -93,12 +93,6 @@ function Debtors() {
         setTimeout(() => setShowDetails(true), 10);
     };
 
-    // Sign out logic (same as in Greeting component)
-    const handleSignOut = () => {
-        localStorage.removeItem('fin_user');
-        window.location.replace('login.html');
-    };
-
     return (
         <>
             <div className="ledgersBox">
@@ -172,8 +166,6 @@ function Debtors() {
                             Save to PDF
                         </button>
                     </div>
-                    {/* Sign out button in the same position as Greeting */}
-                    {/* Removed signout button, now handled by sidebar */}
                 </div>
             </div>
         </>
