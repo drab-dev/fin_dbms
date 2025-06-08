@@ -101,10 +101,9 @@ function Ledgers() {
                                 <div className="ledgerSelectionContainer" style={{ visibility: results.length > 0 ? "visible" : "hidden" }} >
                                     <div className="ledgerResults">
                                         {
-                                            results.map((ledgerElement, index) => {
+                                            results.map((ledgerElement) => {
                                                 return (
-
-                                                    <div className="ledgerCard" onClick={() => selectLedger(ledgerElement)}>
+                                                    <div className="ledgerCard" key={ledgerElement.id} onClick={() => selectLedger(ledgerElement)}>
                                                         <h3>{ledgerElement.name}</h3>
                                                         <p>{ledgerElement.amount}</p>
                                                     </div>
@@ -121,7 +120,7 @@ function Ledgers() {
 
                                 {selectedLedger ? (
                                     <div className="ledgerDetails">
-                                        <p>
+                                        <div>
                                             <p>
                                                 Description: {selectedLedger.description}
                                             </p>
@@ -137,7 +136,7 @@ function Ledgers() {
                                             <p>
                                                 Payment Method: {selectedLedger.paymentMethod}
                                             </p>
-                                        </p>
+                                        </div>
                                     </div>
                                 ) : (
                                     <p>Please select a ledger to view its details.</p>
