@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import App from './App';
 import Login from './Login';
 
 const Root = () => {
-  const [user, setUser] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('fin_user')) || null;
-    } catch {
-      return null;
-    }
-  });
+  let user = null;
+  try {
+    user = JSON.parse(localStorage.getItem('fin_user')) || null;
+  } catch {
+    user = null;
+  }
 
   if (!user) {
-    return <Login onLogin={setUser} />;
+    return <Login onLogin={() => window.location.reload()} />;
   }
   return <App />;
 };
