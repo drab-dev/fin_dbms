@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './fin.css';
-import Sidebar from './sideBar';
+import Sidebar from './sideBar.jsx';
 
 const DashboardStats = () => {
   const stats = {
@@ -91,7 +91,7 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.replace('login.html'); // Use replace to prevent back navigation
+    window.location.replace('Login.jsx'); // Use replace to prevent back navigation
   };
 
   return (
