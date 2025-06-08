@@ -8,9 +8,10 @@ export default defineConfig({
     // This is the CRUCIAL part for Single Page Applications (SPAs)
     // It tells Vite's development server to serve 'index.html'
     // for any requested path that doesn't correspond to a static file.
-    historyApiFallback: true, 
+    historyApiFallback: true, // Ensure SPA routing works in development
   },
-  // You might also need to explicitly set the base path if your app isn't served from the root
-  // For most development setups, this isn't needed, but good to know:
-  // base: '/', 
+  build: {
+    outDir: 'dist', // Ensure the build output directory is correct
+  },
+  base: '/', // Set the base path for deployment
 });

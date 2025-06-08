@@ -1,4 +1,4 @@
-import Sidebar from "./sideBar.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 import './fin.css';
 import { useState } from "react";
 import { Link } from "react-router-dom";
