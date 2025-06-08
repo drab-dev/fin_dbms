@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import Main from './main.jsx';
 import Login from './Login';
 
 const Root = () => {
@@ -13,7 +13,7 @@ const Root = () => {
   if (!user) {
     return <Login onLogin={() => window.location.reload()} />;
   }
-  return <App />;
+  return <Main />;
 };
 
 export default Root;
