@@ -1,6 +1,6 @@
 import Sidebar from "./sideBar";
 import './fin.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function Ledgers() {
@@ -83,6 +83,12 @@ function Ledgers() {
         setselectedLedger(ledgerElement)
     }
 
+    // Sign out logic (same as in Greeting component)
+    const handleSignOut = () => {
+        localStorage.removeItem('fin_user');
+        window.location.replace('login.html');
+    };
+
     return (
         <>
             <div className="ledgersBox">
@@ -148,6 +154,34 @@ function Ledgers() {
                         <div></div>
                         <button className="savetopdfBtn" style={{ opacity: selectedLedger ? "1" : "0" }}>
                             Save to PDF
+                        </button>
+                    </div>
+                    {/* Sign out button in the same position as Greeting */}
+                    <div className="greeting-container">
+                        <button
+                            className="signout-btn"
+                            onClick={handleSignOut}
+                            style={{
+                                position: 'fixed',
+                                bottom: '10px',
+                                left: '10px',
+                                marginTop: '14px',
+                                background: 'linear-gradient(90deg, #ff5858 0%, #f09819 100%)',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: '20px',
+                                padding: '8px 22px',
+                                fontWeight: 'bold',
+                                fontSize: '1rem',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                                cursor: 'pointer',
+                                transition: 'background 0.2s, transform 0.1s',
+                                zIndex: 1000
+                            }}
+                            onMouseOver={e => e.currentTarget.style.background = 'linear-gradient(90deg, #f09819 0%, #ff5858 100%)'}
+                            onMouseOut={e => e.currentTarget.style.background = 'linear-gradient(90deg, #ff5858 0%, #f09819 100%)'}
+                        >
+                            Sign Out
                         </button>
                     </div>
                 </div>
