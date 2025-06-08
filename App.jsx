@@ -69,7 +69,7 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    navigate('/login', { replace: true });
+    window.location.replace('login.html'); // Use replace to prevent back navigation
   };
 
   return (
