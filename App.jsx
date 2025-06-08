@@ -130,6 +130,14 @@ const Greeting = () => {
 };
 
 const App = () => {
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    const user = localStorage.getItem('fin_user');
+    if (!user) {
+      window.location.reload(); // Reload to trigger Root.jsx login logic
+    }
+  }, []);
+
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <Sidebar></Sidebar>
