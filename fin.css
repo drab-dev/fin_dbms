@@ -23,23 +23,28 @@ body {
   width: 100vw;
 }
 
+/* Sidebar Styles */
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    background-color: var(--sidebar-color);
-    color: var(--text-light);
-    padding: 1.5rem;
-    transition: width var(--transition-speed);
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background-color: var(--sidebar-color);
+  color: var(--text-light);
+  padding: 1.5rem;
+  transition: width var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.sidebar.expanded {
+  width: 250px;
 }
 
 .sidebar.collapsed {
-    width: 40px;
+  width: 80px;
 }
 
 .toggle-btn {
@@ -66,6 +71,18 @@ body {
     font-size: 18px;
     letter-spacing: 1px;
     color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .menu {
@@ -82,6 +99,9 @@ body {
     transition: background 0.3s, transform 0.2s;
     border-radius: 6px;
     color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .menu-item:hover {
@@ -208,11 +228,19 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateX(4px);
+}
+
+.nav-item.collapsed {
+  justify-content: center;
+  padding: 0.75rem;
 }
 
 .sign-out-btn {
@@ -225,9 +253,79 @@ body {
   transition: all var(--transition-speed);
   margin-top: auto;
   width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sign-out-btn:hover {
   background-color: var(--text-light);
   color: var(--sidebar-color);
+}
+
+.sign-out-btn.collapsed {
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-color);
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+}
+
+.login-box h2 {
+  margin-bottom: 1rem;
+  color: var(--sidebar-color);
+  text-align: center;
+}
+
+.login-box input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-box button {
+  padding: 0.75rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-box button:hover {
+  background-color: #4e8c74;
+}
+
+.login-logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logo img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: contain;
 }

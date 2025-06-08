@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <aside className={`sidebar ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <div className="sidebar-header">
-        <h2>Menu</h2>
+        <h2 className="menu-title">{isExpanded ? 'Menu' : 'M'}</h2>
         <button 
           onClick={toggleSidebar} 
           className="toggle-btn"
@@ -28,25 +28,25 @@ const Sidebar = () => {
       </div>
       
       <nav className="sidebar-nav">
-        <Link to="/" className="nav-item">
-          Dashboard
+        <Link to="/" className={`nav-item ${isExpanded ? '' : 'collapsed'}`}>
+          {isExpanded ? 'Dashboard' : 'D'}
         </Link>
-        <Link to="/ledgers" className="nav-item">
-          Ledgers
+        <Link to="/ledgers" className={`nav-item ${isExpanded ? '' : 'collapsed'}`}>
+          {isExpanded ? 'Ledgers' : 'L'}
         </Link>
-        <Link to="/debtors" className="nav-item">
-          Debtors
+        <Link to="/debtors" className={`nav-item ${isExpanded ? '' : 'collapsed'}`}>
+          {isExpanded ? 'Debtors' : 'Db'}
         </Link>
-        <Link to="/creditors" className="nav-item">
-          Creditors
+        <Link to="/creditors" className={`nav-item ${isExpanded ? '' : 'collapsed'}`}>
+          {isExpanded ? 'Creditors' : 'Cr'}
         </Link>
-        <Link to="/statements" className="nav-item">
-          Statements
+        <Link to="/statements" className={`nav-item ${isExpanded ? '' : 'collapsed'}`}>
+          {isExpanded ? 'Statements' : 'S'}
         </Link>
       </nav>
 
-      <button onClick={handleSignOut} className="sign-out-btn">
-        Sign Out
+      <button onClick={handleSignOut} className={`sign-out-btn ${isExpanded ? '' : 'collapsed'}`}>
+        {isExpanded ? 'Sign Out' : 'SO'}
       </button>
     </aside>
   );
