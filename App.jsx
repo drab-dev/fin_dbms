@@ -23,7 +23,7 @@ const DashboardStats = () => {
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Customers</div>
-        <div className="stat-value">{stats.Customers}</div>
+        <div className="stat-value">{stats.customers}</div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Vendors</div>

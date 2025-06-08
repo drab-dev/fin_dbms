@@ -7,7 +7,18 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "checkJs": false
   },
-  "include": ["src", "**/*.ts", "**/*.tsx"]
+  "include": ["src", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": [
+    "dist",
+    "fin_dbms/dist",
+    "vite.config.js",
+    "supabaseClient.js",
+    "index.js",
+    "fin_dbms/eslint.config.js",
+    "fin_dbms/vite.config.js"
+  ]
 }
