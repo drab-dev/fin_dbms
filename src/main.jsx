@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Ledgers from "../Ledgers";
-import App from "./App";
-import Debtors from "./Debtors.jsx";
-import Creditors from "../Creditors.jsx";
+import Ledgers from './Ledgers';
+import App from './App';
+import Debtors from './Debtors.jsx';
+import Creditors from './Creditors.jsx';
 
 function Main() {
   return (

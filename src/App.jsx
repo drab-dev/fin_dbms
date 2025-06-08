@@ -1,8 +1,8 @@
 // Moved from project root
 import React, { useEffect, useState } from 'react';
 import './fin.css';
-import Sidebar from '../sideBar.jsx';
-import { useRealtimeNetProfit } from '../React_hook_for_net_profit_or_loss.jsx';
+import Sidebar from './sideBar.jsx';
+import { useRealtimeNetProfit } from './React_hook_for_net_profit_or_loss.jsx';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardStats = () => {

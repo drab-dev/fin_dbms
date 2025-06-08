@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from './main.jsx';
-import Login from '../Login';
+import Login from './Login';
 
 const Root = () => {
   let user = null;
