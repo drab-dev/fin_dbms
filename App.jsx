@@ -1,15 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './fin.css';
+import { supabase } from './supabaseClient';
 
 const DashboardStats = () => {
-  const stats = {
-    transactions: 1500,
-    inventory: 321,
-    customers: 87,
-    vendors: 34,
-    orders: 12,
-    lowstock: 5,
-  };
+  const [stats, setStats] = useState({
+    transactions: 0,
+    inventory: 0,
+    customers: 0,
+    vendors: 0,
+    orders: 0,
+    lowstock: 0,
+  });
+
+  useEffect(() => {
+    async function fetchStats() {
+      // Sample Supabase queries for each stat
+      // Adjust table/column names as per your schema
+      const { count: transactions } = await supabase
+        .from('transactions')
+        .select('*', { count: 'exact', head: true });
+      const { count: inventory } = await supabase
+        .from('inventory')
+        .select('*', { count: 'exact', head: true });
+      const { count: customers } = await supabase
+        .from('customers')
+        .select('*', { count: 'exact', head: true });
+      const { count: vendors } = await supabase
+        .from('vendors')
+        .select('*', { count: 'exact', head: true });
+      const { count: orders } = await supabase
+        .from('orders')
+        .select('*', { count: 'exact', head: true });
+      // Example: low stock = inventory items with quantity < 10
+      const { count: lowstock } = await supabase
+        .from('inventory')
+        .select('*', { count: 'exact', head: true })
+        .lt('quantity', 10);
+      setStats({
+        transactions: transactions ?? 0,
+        inventory: inventory ?? 0,
+        customers: customers ?? 0,
+        vendors: vendors ?? 0,
+        orders: orders ?? 0,
+        lowstock: lowstock ?? 0,
+      });
+    }
+    fetchStats();
+  }, []);
+
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
@@ -22,7 +60,7 @@ const DashboardStats = () => {
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Customers</div>
-        <div className="stat-value">{stats.Customers}</div>
+        <div className="stat-value">{stats.customers}</div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Vendors</div>
@@ -121,7 +159,7 @@ const Greeting = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.replace('login.html'); // Use replace to prevent back navigation
+    window.location.replace('/'); // Use root route for Vite/React SPA
   };
 
   return (
@@ -157,6 +195,14 @@ const Greeting = () => {
 };
 
 const App = () => {
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    const user = localStorage.getItem('fin_user');
+    if (!user) {
+      window.location.replace('/'); // Use root route for Vite/React SPA
+    }
+  }, []);
+
   const openBlank = (page) => {
     window.open(page, '_self');
   };
