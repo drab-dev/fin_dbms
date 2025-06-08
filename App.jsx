@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './fin.css';
 import Sidebar from './sideBar.jsx';
+import { useRealtimeNetProfit } from './React_hook_for_net_profit_or_loss.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardStats = () => {
+  const { netProfit, loading: profitLoading, error: profitError } = useRealtimeNetProfit();
   const stats = {
-    transactions: 1500,
     inventory: 321,
     customers: 87,
     vendors: 34,
@@ -14,8 +16,10 @@ const DashboardStats = () => {
   return (
     <div className="dashboard" id="dashboard">
       <div className="stat-card">
-        <div className="stat-title">Total Transactions</div>
-        <div className="stat-value">{stats.transactions}</div>
+        <div className="stat-title">Net Profit/Loss</div>
+        <div className="stat-value" style={{ color: profitLoading ? undefined : (netProfit > 0 ? 'green' : netProfit < 0 ? 'red' : undefined) }}>
+          {profitLoading ? 'Loading...' : (profitError ? 'Error' : (netProfit !== null ? netProfit : 0))}
+        </div>
       </div>
       <div className="stat-card">
         <div className="stat-title">Total Inventory Items</div>
@@ -41,63 +45,37 @@ const DashboardStats = () => {
   );
 };
 
-/*const FloatingButtons = () => {
-  useEffect(() => {
-    const fabs = document.querySelectorAll('.fab');
-    fabs.forEach((fab) => {
-      fab.addEventListener('click', () => {
-        fab.animate([
-          { transform: 'scale(1) rotate(0deg)' },
-          { transform: 'scale(1.18) rotate(12deg)' },
-          { transform: 'scale(1) rotate(0deg)' },
-        ], {
-          duration: 400,
-          easing: 'cubic-bezier(.68,-0.55,.27,1.55)',
-        });
-      });
-    });
-  }, []);
-  return (
-    <div className="fab-container">
-      <button className="fab fab-1" title="Add Transaction" id="btnAddTrans">＋</button>
-      <button className="fab fab-2" title="Add Inventory" id="btnAddInv">📦</button>
-      <button className="fab fab-3" title="Add Customer" id="btnAddCust">👤</button>
-      <button className="fab fab-4" title="Add Vendor" id="btnAddVend">🏢</button>
-      <button className="fab fab-5" title="Reports" id="btnReports">📊</button>
-      <button className="fab fab-6" title="Settings" id="btnSettings">⚙️</button>
-    </div>
-  );
-};*/
-
-
 const Greeting = () => {
+  const [greeting, setGreeting] = useState('');
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const greetingElement = document.getElementById('greeting');
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) {
-      greetingElement.textContent = 'Good Morning';
+      setGreeting('Good Morning');
     } else if (hour >= 12 && hour < 16) {
-      greetingElement.textContent = 'Good Afternoon';
+      setGreeting('Good Afternoon');
     } else if (hour >= 16 && hour < 20) {
-      greetingElement.textContent = 'Good Evening';
+      setGreeting('Good Evening');
     } else {
-      greetingElement.textContent = 'Welcome';
+      setGreeting('Welcome');
     }
     const user = JSON.parse(localStorage.getItem('fin_user') || '{}');
     if (user && user.username) {
-      document.getElementById('userName').textContent = user.username.charAt(0).toUpperCase() + user.username.slice(1);
+      setUsername(user.username.charAt(0).toUpperCase() + user.username.slice(1));
     }
   }, []);
 
   const handleSignOut = () => {
     localStorage.removeItem('fin_user');
-    window.location.replace('Login.jsx'); // Use replace to prevent back navigation
+    navigate('/login', { replace: true });
   };
 
   return (
     <div className="greeting-container">
-      <div className="greeting" id="greeting"></div>
-      <div className="name" id="userName">Nikhil</div>
+      <div className="greeting">{greeting}</div>
+      <div className="name">{username || 'User'}</div>
       <button
         className="signout-btn"
         onClick={handleSignOut}
@@ -127,9 +105,10 @@ const Greeting = () => {
 };
 
 const App = () => {
+  // No need to handle auth here; Root.jsx should handle redirecting to login if not authenticated
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      <Sidebar></Sidebar>
+      <Sidebar />
       <div style={{ flex: 1, position: 'relative' }}>
         <div className="dashboard-container">
           <div className="dashboard-title">Dashboard</div>
